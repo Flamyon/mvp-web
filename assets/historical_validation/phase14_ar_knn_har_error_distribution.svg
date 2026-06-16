@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520">
+<rect x="0" y="0" width="980" height="520" fill="#ffffff"/>
+<text x="490.0" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700">Distribucion del error absoluto por modelo</text>
+<rect x="82" y="84" width="866.00" height="320.00" fill="none" stroke="#222222"/>
+<line x1="82" y1="404.00" x2="948.00" y2="404.00" stroke="#e8e8e8"/>
+<text x="74" y="408.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">0</text>
+<line x1="82" y1="324.00" x2="948.00" y2="324.00" stroke="#e8e8e8"/>
+<text x="74" y="328.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">0.509</text>
+<line x1="82" y1="244.00" x2="948.00" y2="244.00" stroke="#e8e8e8"/>
+<text x="74" y="248.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">1.02</text>
+<line x1="82" y1="164.00" x2="948.00" y2="164.00" stroke="#e8e8e8"/>
+<text x="74" y="168.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">1.53</text>
+<line x1="82" y1="84.00" x2="948.00" y2="84.00" stroke="#e8e8e8"/>
+<text x="74" y="88.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">2.04</text>
+<text x="490.0" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#444444">AR(49), kNN k=200 y HAR-logRV sobre test comparable</text>
+<line x1="226.33" y1="132.81" x2="226.33" y2="396.09" stroke="#6b8e23" stroke-width="1.8"/>
+<line x1="197.24" y1="132.81" x2="255.43" y2="132.81" stroke="#6b8e23" stroke-width="1.8"/>
+<line x1="197.24" y1="396.09" x2="255.43" y2="396.09" stroke="#6b8e23" stroke-width="1.8"/>
+<rect x="174.37" y="254.90" width="103.92" height="108.26" fill="#6b8e23" opacity="0.34" stroke="#6b8e23" stroke-width="1.8"/>
+<line x1="174.37" y1="316.77" x2="278.29" y2="316.77" stroke="#222222" stroke-width="2"/>
+<text x="226.33" y="444" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">AR(49)</text>
+<text x="226.33" y="462" text-anchor="middle" font-family="Arial, sans-serif" font-size="11">RMSE=0.864067</text>
+<text x="226.33" y="478" text-anchor="middle" font-family="Arial, sans-serif" font-size="11">mediana=0.5552</text>
+<line x1="515.00" y1="133.74" x2="515.00" y2="396.37" stroke="#b45f06" stroke-width="1.8"/>
+<line x1="485.90" y1="133.74" x2="544.10" y2="133.74" stroke="#b45f06" stroke-width="1.8"/>
+<line x1="485.90" y1="396.37" x2="544.10" y2="396.37" stroke="#b45f06" stroke-width="1.8"/>
+<rect x="463.04" y="253.77" width="103.92" height="107.37" fill="#b45f06" opacity="0.34" stroke="#b45f06" stroke-width="1.8"/>
+<line x1="463.04" y1="317.59" x2="566.96" y2="317.59" stroke="#222222" stroke-width="2"/>
+<text x="515.00" y="444" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">kNN k=200</text>
+<text x="515.00" y="462" text-anchor="middle" font-family="Arial, sans-serif" font-size="11">RMSE=0.876532</text>
+<text x="515.00" y="478" text-anchor="middle" font-family="Arial, sans-serif" font-size="11">mediana=0.5500</text>
+<line x1="803.67" y1="137.92" x2="803.67" y2="395.57" stroke="#2a6fbb" stroke-width="1.8"/>
+<line x1="774.57" y1="137.92" x2="832.76" y2="137.92" stroke="#2a6fbb" stroke-width="1.8"/>
+<line x1="774.57" y1="395.57" x2="832.76" y2="395.57" stroke="#2a6fbb" stroke-width="1.8"/>
+<rect x="751.71" y="254.94" width="103.92" height="108.77" fill="#2a6fbb" opacity="0.34" stroke="#2a6fbb" stroke-width="1.8"/>
+<line x1="751.71" y1="318.62" x2="855.63" y2="318.62" stroke="#222222" stroke-width="2"/>
+<text x="803.67" y="444" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">HAR-logRV</text>
+<text x="803.67" y="462" text-anchor="middle" font-family="Arial, sans-serif" font-size="11">RMSE=0.860811</text>
+<text x="803.67" y="478" text-anchor="middle" font-family="Arial, sans-serif" font-size="11">mediana=0.5435</text>
+<text x="515.00" y="510" text-anchor="middle" font-family="Arial, sans-serif" font-size="13">modelo</text>
+<text transform="translate(18,244.0) rotate(-90)" text-anchor="middle" font-family="Arial, sans-serif" font-size="13">abs(error)</text>
+</svg>

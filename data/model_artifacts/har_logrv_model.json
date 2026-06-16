@@ -1,0 +1,38 @@
+{
+  "model_name": "har_logrv_compact",
+  "version": "1.0",
+  "trained_at": "2026-06-06",
+  "train_start": "2024-01-02 00:00:00",
+  "train_end": "2025-06-30 23:55:00",
+  "validation_start": "2025-07-01 00:00:00",
+  "validation_end": "2025-12-31 23:55:00",
+  "test_start": "2026-01-01 00:00:00",
+  "test_end": "2026-04-30 19:55:00",
+  "horizon_bars": 12,
+  "horizon_minutes": 60,
+  "target": "log_rv_future_12",
+  "features": [
+    "log_rv_past_12",
+    "log_rv_past_48",
+    "log_rv_past_288"
+  ],
+  "intercept": -2.438645612735968,
+  "coefficients": {
+    "log_rv_past_12": 0.4452067045934396,
+    "log_rv_past_48": 0.2334397348903525,
+    "log_rv_past_288": 0.19992385058134796
+  },
+  "coefficient_vector": [
+    0.4452067045934396,
+    0.2334397348903525,
+    0.19992385058134796
+  ],
+  "train_n": 157248,
+  "ridge_lambda_used": 0.0,
+  "metrics": {
+    "train_rmse": 0.8048000626772057,
+    "validation_rmse": 0.8218556175942874,
+    "test_rmse": 0.860810784219676,
+    "test_split_for_artifact_metric": "test_knn_comparable_sample"
+  }
+}

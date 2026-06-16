@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="500" viewBox="0 0 1120 500">
+<rect x="0" y="0" width="1120" height="500" fill="#ffffff"/>
+<text x="560.0" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700">Comparacion historica AR(49), kNN y HAR-logRV</text>
+<rect x="76" y="78" width="1016.00" height="292.00" fill="none" stroke="#222222"/>
+<line x1="76" y1="370.00" x2="1092.00" y2="370.00" stroke="#e8e8e8"/>
+<text x="68" y="374.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">0</text>
+<line x1="76" y1="297.00" x2="1092.00" y2="297.00" stroke="#e8e8e8"/>
+<text x="68" y="301.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">0.245</text>
+<line x1="76" y1="224.00" x2="1092.00" y2="224.00" stroke="#e8e8e8"/>
+<text x="68" y="228.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">0.491</text>
+<line x1="76" y1="151.00" x2="1092.00" y2="151.00" stroke="#e8e8e8"/>
+<text x="68" y="155.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">0.736</text>
+<line x1="76" y1="78.00" x2="1092.00" y2="78.00" stroke="#e8e8e8"/>
+<text x="68" y="82.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">0.982</text>
+<text x="560.0" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#444444">Target: log_rv_future_12 · test comparable: 5000 puntos</text>
+<rect x="143.73" y="170.42" width="81.28" height="199.58" fill="#2a6fbb" opacity="0.78"/>
+<text x="184.37" y="164.42" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">0.670990</text>
+<rect x="265.65" y="112.99" width="81.28" height="257.01" fill="#b45f06" opacity="0.78"/>
+<text x="306.29" y="106.99" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">0.864067</text>
+<text x="245.33" y="422" text-anchor="end" transform="rotate(-32 245.33,422)" font-family="Arial, sans-serif" font-size="11">AR(49)</text>
+<rect x="482.40" y="167.40" width="81.28" height="202.60" fill="#2a6fbb" opacity="0.78"/>
+<text x="523.04" y="161.40" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">0.681143</text>
+<rect x="604.32" y="109.29" width="81.28" height="260.71" fill="#b45f06" opacity="0.78"/>
+<text x="644.96" y="103.29" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">0.876532</text>
+<text x="584.00" y="422" text-anchor="end" transform="rotate(-32 584.00,422)" font-family="Arial, sans-serif" font-size="11">kNN k=200</text>
+<rect x="821.07" y="170.98" width="81.28" height="199.02" fill="#2a6fbb" opacity="0.78"/>
+<text x="861.71" y="164.98" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">0.669129</text>
+<rect x="942.99" y="113.96" width="81.28" height="256.04" fill="#b45f06" opacity="0.78"/>
+<text x="983.63" y="107.96" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">0.860811</text>
+<text x="922.67" y="422" text-anchor="end" transform="rotate(-32 922.67,422)" font-family="Arial, sans-serif" font-size="11">HAR-logRV</text>
+<g><circle cx="970.00" cy="30.00" r="4" fill="#2a6fbb"/><text x="980.00" y="34.00" font-family="Arial, sans-serif" font-size="12">MAE</text></g>
+<g><circle cx="970.00" cy="48.00" r="4" fill="#b45f06"/><text x="980.00" y="52.00" font-family="Arial, sans-serif" font-size="12">RMSE</text></g>
+<text x="584.00" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="13">modelo</text>
+<text transform="translate(18,224.0) rotate(-90)" text-anchor="middle" font-family="Arial, sans-serif" font-size="13">error</text>
+</svg>

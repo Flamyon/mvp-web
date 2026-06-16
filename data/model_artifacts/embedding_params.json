@@ -1,0 +1,26 @@
+{
+  "series": "z_log_rv_past_12",
+  "source_series": "log_rv_past_12",
+  "target": "log_rv_future_12",
+  "tau_selected": 137,
+  "m_selected": 5,
+  "selected_k_by_validation_rmse": 50,
+  "theiler_window": 685,
+  "embedding_convention": "X_t=[z_t,z_{t-tau},z_{t-2tau},...,z_{t-(m-1)tau}]",
+  "horizon_bars": 12,
+  "horizon_minutes": 60,
+  "x_mean_train": -11.157315342627195,
+  "x_std_train": 1.1877743469251192,
+  "train_start": "2024-01-02 00:00:00",
+  "train_end": "2025-06-30 23:55:00",
+  "train_size": 157248,
+  "train_embedding_vectors": 156700,
+  "effective_history_bars": 548,
+  "minimum_useful_log_rv_values": 549,
+  "recommended_useful_log_rv_values": 750,
+  "source_phase": "phase8_state_space_reconstruction + phase11_local_state_space_prediction",
+  "source_artifacts": [
+    "reports/tables/phase8_selected_embedding_params.json",
+    "reports/tables/phase11_prediction_summary.json"
+  ]
+}

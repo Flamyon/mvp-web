@@ -1,0 +1,41 @@
+{
+  "horizon_bars": 12,
+  "horizon_minutes": 60,
+  "target": "log_rv_future_12",
+  "models": {
+    "persistence": {
+      "test_rmse": 0.9774995765402329,
+      "test_mae": 0.7628623802504745,
+      "test_r2": 0.4031638510047517
+    },
+    "ar49": {
+      "test_rmse": 0.8640665230562388,
+      "test_mae": 0.6709895921582475,
+      "test_r2": 0.5336453382551545
+    },
+    "har_logrv_global": {
+      "test_rmse": 0.86081078422,
+      "test_mae": 0.669129161573,
+      "test_r2": 0.537273115364
+    },
+    "knn_k200": {
+      "test_rmse": 0.876532398003,
+      "test_mae": 0.681143476346,
+      "test_r2": 0.520216530787
+    },
+    "knn_k50": {
+      "test_rmse": 0.8938770661690388,
+      "test_mae": 0.6934400038288661,
+      "test_r2": 0.5009115109461493
+    }
+  },
+  "recommended_model": "har_logrv_global",
+  "source_phase": "phase14_har_logrv_mvp",
+  "source_artifacts": [
+    "reports/tables/phase14_prediction_summary.json",
+    "reports/tables/phase14_test_metrics.csv",
+    "reports/tables/phase11_prediction_summary.json",
+    "reports/tables/phase11_test_metrics.csv",
+    "reports/tables/phase12_test_metrics.csv"
+  ]
+}

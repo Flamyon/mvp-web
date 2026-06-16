@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="500" viewBox="0 0 1120 500">
+<rect x="0" y="0" width="1120" height="500" fill="#ffffff"/>
+<text x="560.0" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700">Test: MAE y RMSE</text>
+<rect x="76" y="58" width="1016.00" height="314.00" fill="none" stroke="#222222" stroke-width="1"/>
+<line x1="76" y1="372.00" x2="1092.00" y2="372.00" stroke="#e8e8e8" stroke-width="1"/>
+<text x="68" y="376.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">0</text>
+<line x1="76" y1="293.50" x2="1092.00" y2="293.50" stroke="#e8e8e8" stroke-width="1"/>
+<text x="68" y="297.50" text-anchor="end" font-family="Arial, sans-serif" font-size="11">0.354</text>
+<line x1="76" y1="215.00" x2="1092.00" y2="215.00" stroke="#e8e8e8" stroke-width="1"/>
+<text x="68" y="219.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">0.709</text>
+<line x1="76" y1="136.50" x2="1092.00" y2="136.50" stroke="#e8e8e8" stroke-width="1"/>
+<text x="68" y="140.50" text-anchor="end" font-family="Arial, sans-serif" font-size="11">1.06</text>
+<line x1="76" y1="58.00" x2="1092.00" y2="58.00" stroke="#e8e8e8" stroke-width="1"/>
+<text x="68" y="62.00" text-anchor="end" font-family="Arial, sans-serif" font-size="11">1.42</text>
+<rect x="114.61" y="151.22" width="52.83" height="220.78" fill="#2a6fbb" opacity="0.78"/>
+<rect x="187.76" y="91.64" width="52.83" height="280.36" fill="#b45f06" opacity="0.78"/>
+<text x="177.60" y="422" text-anchor="end" transform="rotate(-32 177.60,422)" font-family="Arial, sans-serif" font-size="11">historical_mean</text>
+<rect x="317.81" y="202.99" width="52.83" height="169.01" fill="#2a6fbb" opacity="0.78"/>
+<rect x="390.96" y="155.44" width="52.83" height="216.56" fill="#b45f06" opacity="0.78"/>
+<text x="380.80" y="422" text-anchor="end" transform="rotate(-32 380.80,422)" font-family="Arial, sans-serif" font-size="11">persistence</text>
+<rect x="521.01" y="223.34" width="52.83" height="148.66" fill="#2a6fbb" opacity="0.78"/>
+<rect x="594.16" y="180.57" width="52.83" height="191.43" fill="#b45f06" opacity="0.78"/>
+<text x="584.00" y="422" text-anchor="end" transform="rotate(-32 584.00,422)" font-family="Arial, sans-serif" font-size="11">ar49_horizon12</text>
+<rect x="724.21" y="221.09" width="52.83" height="150.91" fill="#2a6fbb" opacity="0.78"/>
+<rect x="797.36" y="177.81" width="52.83" height="194.19" fill="#b45f06" opacity="0.78"/>
+<text x="787.20" y="422" text-anchor="end" transform="rotate(-32 787.20,422)" font-family="Arial, sans-serif" font-size="11">knn tau137_m5</text>
+<rect x="927.41" y="216.52" width="52.83" height="155.48" fill="#2a6fbb" opacity="0.78"/>
+<rect x="1000.56" y="169.39" width="52.83" height="202.61" fill="#b45f06" opacity="0.78"/>
+<text x="990.40" y="422" text-anchor="end" transform="rotate(-32 990.40,422)" font-family="Arial, sans-serif" font-size="11">knn tau137_m14</text>
+<g><circle cx="960.00" cy="30.00" r="4" fill="#2a6fbb"/><text x="970.00" y="34.00" font-family="Arial, sans-serif" font-size="12">MAE</text></g>
+<g><circle cx="960.00" cy="48.00" r="4" fill="#b45f06"/><text x="970.00" y="52.00" font-family="Arial, sans-serif" font-size="12">RMSE</text></g>
+<text x="584.00" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="13">modelo</text>
+<text transform="translate(18,215.0) rotate(-90)" text-anchor="middle" font-family="Arial, sans-serif" font-size="13">error</text>
+</svg>

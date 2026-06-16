@@ -21,6 +21,10 @@ HORIZON_BARS = 12
 HORIZON_MINUTES = 60
 EPSILON_LOG_RV = 1e-12
 BINANCE_KLINES_URL = "https://api.binance.com/api/v3/klines"
+BINANCE_KLINES_ENDPOINTS = (
+    {"name": "Binance Global", "url": BINANCE_KLINES_URL},
+    {"name": "Binance.US", "url": "https://api.binance.us/api/v3/klines"},
+)
 CACHE_TTL_SECONDS = 300
 MAX_UPLOAD_ROWS = 2000
 

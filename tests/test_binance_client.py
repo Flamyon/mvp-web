@@ -100,3 +100,38 @@ def test_fetch_recent_http_error(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(binance_client.requests, "get", lambda *args, **kwargs: Response())
     with pytest.raises(RuntimeError, match="Binance HTTP error: 500"):
         binance_client.fetch_recent_btcusdt_klines()
+
+
+def test_fetch_recent_with_source_falls_back_after_http_451(monkeypatch: pytest.MonkeyPatch) -> None:
+    payload = [raw_kline(1_700_000_000_000)]
+    calls: list[str] = []
+
+    class BlockedResponse:
+        status_code = 451
+
+        def raise_for_status(self) -> None:
+            raise requests.exceptions.HTTPError(response=self)
+
+    class OkResponse:
+        def raise_for_status(self) -> None:
+            return None
+
+        def json(self) -> list:
+            return payload
+
+    def fake_get(url: str, *args: object, **kwargs: object) -> object:
+        calls.append(url)
+        if "binance.us" in url:
+            return OkResponse()
+        return BlockedResponse()
+
+    monkeypatch.setattr(binance_client.requests, "get", fake_get)
+
+    raw_klines, source_name = binance_client.fetch_recent_btcusdt_klines_with_source()
+
+    assert raw_klines == payload
+    assert source_name == "Binance.US"
+    assert calls == [
+        "https://api.binance.com/api/v3/klines",
+        "https://api.binance.us/api/v3/klines",
+    ]

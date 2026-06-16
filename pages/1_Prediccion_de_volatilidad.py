@@ -3,7 +3,7 @@ from __future__ import annotations
 import pandas as pd
 import streamlit as st
 
-from src.binance_client import fetch_and_normalize_recent_btcusdt
+from src.binance_client import fetch_and_normalize_recent_btcusdt_with_source
 from src.config import ARTIFACTS_DIR, CACHE_TTL_SECONDS, INTERVAL, SAMPLE_DIR, SAMPLE_FILENAME, SYMBOL
 from src.data_loader import load_sample_data, load_user_csv
 from src.data_validation import summarize_price_data, validate_price_data
@@ -49,9 +49,9 @@ STATUS_LABELS = {
 
 
 @st.cache_data(ttl=CACHE_TTL_SECONDS, show_spinner=False)
-def cached_fetch_binance() -> pd.DataFrame:
-    """Fetch Binance data with Streamlit-side cache only."""
-    return fetch_and_normalize_recent_btcusdt(symbol=SYMBOL, interval=INTERVAL)
+def cached_fetch_binance() -> tuple[pd.DataFrame, str]:
+    """Fetch Binance-compatible data with Streamlit-side cache only."""
+    return fetch_and_normalize_recent_btcusdt_with_source(symbol=SYMBOL, interval=INTERVAL)
 
 
 @st.cache_resource(show_spinner=False)
@@ -398,11 +398,12 @@ source = st.radio(
 
 if source == "Binance API":
     st.write(f"Descarga prevista: ultimas velas de `{SYMBOL}` con intervalo `{INTERVAL}`.")
+    st.caption("Si Binance Global bloquea la IP del despliegue, se usa Binance.US automaticamente.")
     if st.button("Descargar ultimas velas", type="primary"):
         try:
             with st.spinner("Descargando y normalizando datos de Binance..."):
-                data = cached_fetch_binance()
-            store_and_show_data(data, "Binance API")
+                data, source_name = cached_fetch_binance()
+            store_and_show_data(data, source_name)
             data_rendered = True
         except Exception as exc:
             st.error(f"No se pudieron descargar datos de Binance: {exc}")

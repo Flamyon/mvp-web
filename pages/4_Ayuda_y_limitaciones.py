@@ -37,6 +37,9 @@ st.subheader("Fuente API Binance")
 st.write(
     f"La integracion con la API de Binance usara las ultimas {BINANCE_LIMIT} velas de {SYMBOL} con intervalo {INTERVAL}."
 )
+st.write(
+    "En despliegues donde Binance Global bloquee la IP con HTTP 451, la app intentara Binance.US automaticamente."
+)
 
 st.subheader("Limitaciones")
 st.write(

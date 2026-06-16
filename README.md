@@ -6,7 +6,7 @@ No predice dirección del precio, no genera señales de trading, no anualiza vol
 
 ## Qué hace
 
-- Carga datos desde Binance, dataset de ejemplo o CSV.
+- Carga datos desde Binance Global, fallback Binance.US, dataset de ejemplo o CSV.
 - Normaliza datos a `timestamp,close` y valida frecuencia, gaps, nulos, orden temporal y precios positivos.
 - Calcula `log_rv_past_12`, `log_rv_past_48`, `log_rv_past_288` y `z_log_rv_past_12`.
 - Genera predicciones de `log_rv_future_12` con Persistencia, kNN local, AR(49), HAR-logRV global y Mini-HAR local.
@@ -45,6 +45,8 @@ timestamp,close
 ```
 
 También se aceptan columnas temporales `open_time`, `date`, `datetime` o `time`. Los CSV subidos se limitan a las últimas 2000 filas; Binance usa hasta 1000 velas cerradas recientes.
+
+En despliegues donde Binance Global responda con HTTP 451 por restriccion de IP/jurisdiccion, la app intenta automaticamente Binance.US para el mismo par `BTCUSDT` e intervalo `5m`.
 
 ## Modelos
 

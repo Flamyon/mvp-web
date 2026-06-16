@@ -8,7 +8,7 @@ from typing import Any
 import pandas as pd
 import requests
 
-from src.config import BINANCE_KLINES_URL, BINANCE_LIMIT, INTERVAL, SYMBOL
+from src.config import BINANCE_KLINES_ENDPOINTS, BINANCE_KLINES_URL, BINANCE_LIMIT, INTERVAL, SYMBOL
 
 
 def fetch_recent_btcusdt_klines(
@@ -17,6 +17,7 @@ def fetch_recent_btcusdt_klines(
     limit: int = BINANCE_LIMIT,
     timeout: int = 10,
     max_retries: int = 3,
+    endpoint_url: str = BINANCE_KLINES_URL,
 ) -> list:
     """Fetch recent raw klines from Binance Spot REST API."""
     if limit > 1000:
@@ -30,7 +31,7 @@ def fetch_recent_btcusdt_klines(
     last_error: Exception | None = None
     for attempt in range(1, max_retries + 1):
         try:
-            response = requests.get(BINANCE_KLINES_URL, params=params, timeout=timeout)
+            response = requests.get(endpoint_url, params=params, timeout=timeout)
             response.raise_for_status()
             payload = response.json()
             if not isinstance(payload, list) or not payload:
@@ -52,6 +53,34 @@ def fetch_recent_btcusdt_klines(
             time.sleep(min(0.25 * attempt, 1.0))
 
     raise RuntimeError(f"Could not fetch Binance klines after {max_retries} attempts: {last_error}")
+
+
+def fetch_recent_btcusdt_klines_with_source(
+    symbol: str = SYMBOL,
+    interval: str = INTERVAL,
+    limit: int = BINANCE_LIMIT,
+    timeout: int = 10,
+    max_retries: int = 3,
+    endpoints: tuple[dict[str, str], ...] = BINANCE_KLINES_ENDPOINTS,
+) -> tuple[list, str]:
+    """Fetch recent raw klines, falling back across compatible Binance endpoints."""
+    errors: list[str] = []
+    for endpoint in endpoints:
+        name = endpoint["name"]
+        try:
+            raw_klines = fetch_recent_btcusdt_klines(
+                symbol=symbol,
+                interval=interval,
+                limit=limit,
+                timeout=timeout,
+                max_retries=max_retries,
+                endpoint_url=endpoint["url"],
+            )
+            return raw_klines, name
+        except RuntimeError as exc:
+            errors.append(f"{name}: {exc}")
+
+    raise RuntimeError("No compatible Binance endpoint responded. " + " | ".join(errors))
 
 
 def normalize_binance_klines(raw_klines: list) -> pd.DataFrame:
@@ -109,3 +138,17 @@ def fetch_and_normalize_recent_btcusdt(
     """Fetch and normalize recent BTCUSDT klines."""
     raw_klines = fetch_recent_btcusdt_klines(symbol=symbol, interval=interval, limit=limit)
     return normalize_binance_klines(raw_klines)
+
+
+def fetch_and_normalize_recent_btcusdt_with_source(
+    symbol: str = SYMBOL,
+    interval: str = INTERVAL,
+    limit: int = BINANCE_LIMIT,
+) -> tuple[pd.DataFrame, str]:
+    """Fetch and normalize recent BTCUSDT klines, returning the endpoint used."""
+    raw_klines, source_name = fetch_recent_btcusdt_klines_with_source(
+        symbol=symbol,
+        interval=interval,
+        limit=limit,
+    )
+    return normalize_binance_klines(raw_klines), source_name

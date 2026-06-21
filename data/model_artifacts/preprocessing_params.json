@@ -1,8 +1,8 @@
 {
   "series": "log_rv_past_12",
   "target": "log_rv_future_12",
-  "x_mean_train": -11.157315342627195,
-  "x_std_train": 1.1877743469251192,
+  "x_mean_train": -11.15731534262724,
+  "x_std_train": 1.1877743469251236,
   "epsilon_for_log_rv": 1e-12,
   "horizon_bars": 12,
   "horizon_minutes": 60,
@@ -12,6 +12,8 @@
     "reports/tables/phase1_shape_summary.csv"
   ],
   "train_period_start": "2024-01-02 00:00:00",
-  "train_period_end": "2025-06-30 23:55:00",
-  "train_sample_size": 157248
+  "train_period_end": "2025-06-30 22:55:00",
+  "train_sample_size": 157236,
+  "feature_scaling_period_end": "2025-06-30 23:55:00",
+  "purge_bars_between_splits": 12
 }

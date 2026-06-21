@@ -182,6 +182,8 @@ class ArtifactExporter:
             "train_period_start": split_train["row_start_time"],
             "train_period_end": split_train["row_end_time"],
             "train_sample_size": int(split_train["row_n"]),
+            "feature_scaling_period_end": TRAIN_END,
+            "purge_bars_between_splits": HORIZON_BARS,
         }
         if params["x_std_train"] <= 0.0:
             raise ValueError("x_std_train must be positive")
@@ -246,8 +248,11 @@ class ArtifactExporter:
         x_std = float(phase11["x_std_train"])
         data = read_prediction_data(self.btc_path / "data" / "processed" / "btc_5m_features.csv")
         train_end = train_end_index(data["times"], TRAIN_END)
+        supervised_train_end = train_end - HORIZON_BARS
+        if supervised_train_end <= 0:
+            raise ValueError("Training split is too short for the target-horizon purge")
         z_values = [(value - x_mean) / x_std for value in data["x"]]
-        train_indices = list(range(train_end))
+        train_indices = list(range(supervised_train_end))
         vectors, indices, times, targets = build_embedding_with_targets(
             z_values,
             data["y"],
@@ -263,21 +268,23 @@ class ArtifactExporter:
             "tau": tau,
             "m": dim,
             "target": "log_rv_future_12",
-            "train_end": TRAIN_END,
+            "feature_scaling_train_end": TRAIN_END,
+            "supervised_train_end": data["times"][supervised_train_end - 1],
+            "purge_bars_between_splits": HORIZON_BARS,
         })
         validate_knn_npz(destination, expected_dim=dim)
 
         if "X" in inspect_npz(source_npz)["keys"]:
             source_x, source_shape = read_npz_numeric_array(source_npz, "X")
             source_indices, _ = read_npz_numeric_array(source_npz, "indices")
-            if source_shape != (len(vectors), dim):
-                raise ValueError(f"Rebuilt vectors {len(vectors), dim} do not match source X shape {source_shape}")
+            if source_shape[1] != dim or source_shape[0] < len(vectors):
+                raise ValueError(f"Rebuilt vectors {len(vectors), dim} are incompatible with source X shape {source_shape}")
             max_abs_diff = 0.0
-            for rebuilt_row, source_row in zip(vectors, source_x):
+            for rebuilt_row, source_row in zip(vectors, source_x[:len(vectors)]):
                 for left, right in zip(rebuilt_row, source_row):
                     max_abs_diff = max(max_abs_diff, abs(left - right))
-            if [int(value) for value in source_indices] != indices:
-                raise ValueError("Rebuilt embedding indices do not match Phase 8 source indices")
+            if [int(value) for value in source_indices[:len(indices)]] != indices:
+                raise ValueError("Rebuilt purged embedding indices do not match the Phase 8 prefix")
             if max_abs_diff > 1e-12:
                 raise ValueError(f"Rebuilt embedding differs from Phase 8 X, max_abs_diff={max_abs_diff}")
 
@@ -401,6 +408,7 @@ class ArtifactExporter:
             index for index, time in enumerate(data["times"])
             if TRAIN_END < time <= VALIDATION_END
         ]
+        validation_indices = validation_indices[:-HORIZON_BARS]
         val_vectors, val_indices, _val_times, val_targets = build_embedding_with_targets(
             z_values,
             data["y"],

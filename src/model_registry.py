@@ -248,7 +248,7 @@ def run_available_predictions(
     last_timestamp = pd.to_datetime(feature_df["timestamp"].iloc[-1], utc=True)
     metadata = {
         "timestamp_used": last_timestamp,
-        "horizon_start": last_timestamp,
+        "horizon_start": last_timestamp + pd.Timedelta(minutes=HORIZON_MINUTES // HORIZON_BARS),
         "horizon_end": last_timestamp + pd.Timedelta(minutes=HORIZON_MINUTES),
     }
 

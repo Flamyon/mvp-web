@@ -179,7 +179,7 @@ def _predict_one(
     rv_true = float(np.exp(y_true) - epsilon)
     rv_pred = float(np.exp(y_pred) - epsilon)
     timestamp = pd.to_datetime(feature_df["timestamp"].iloc[index], utc=True)
-    horizon_start = timestamp
+    horizon_start = timestamp + pd.Timedelta(minutes=HORIZON_MINUTES // HORIZON_BARS)
     horizon_end = timestamp + pd.Timedelta(minutes=HORIZON_MINUTES)
 
     return {

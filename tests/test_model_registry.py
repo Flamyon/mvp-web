@@ -84,5 +84,6 @@ def test_run_available_predictions_with_sample() -> None:
         assert math.isfinite(result["sqrt_rv_percent"])
 
     metadata = payload["metadata"]
-    assert metadata["horizon_end"] - metadata["horizon_start"] == pd.Timedelta(minutes=60)
+    assert metadata["horizon_start"] - metadata["timestamp_used"] == pd.Timedelta(minutes=5)
+    assert metadata["horizon_end"] - metadata["timestamp_used"] == pd.Timedelta(minutes=60)
     assert str(metadata["timestamp_used"].tzinfo) == "UTC"

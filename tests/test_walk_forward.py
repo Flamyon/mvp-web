@@ -104,6 +104,18 @@ def test_walk_forward_returns_expected_columns() -> None:
     assert len(results["persistence"]) == 10
 
 
+def test_walk_forward_horizon_covers_the_twelve_future_candle_opens() -> None:
+    features = add_future_evaluation_target(synthetic_feature_df())
+    result = run_walk_forward_predictions(
+        features,
+        synthetic_models(),
+        max_points_per_model=1,
+    )["persistence"].iloc[0]
+
+    assert result["horizon_start"] - result["timestamp"] == pd.Timedelta(minutes=5)
+    assert result["horizon_end"] - result["timestamp"] == pd.Timedelta(minutes=60)
+
+
 def test_summarize_walk_forward_results() -> None:
     features = add_future_evaluation_target(synthetic_feature_df(rows=260))
     results = run_walk_forward_predictions(features, synthetic_models(), max_points_per_model=10)
